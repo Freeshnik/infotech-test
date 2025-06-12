@@ -2,20 +2,24 @@
 
 namespace App;
 
+use yii\base\Module;
+use yii\caching\CacheInterface;
+use yii\db\Connection;
 use yii\helpers\ArrayHelper;
+use yii\web\IdentityInterface;
 
 class App
 {
 
     /**
-     * @var static
+     * @var App|null
      */
-    protected static $instance;
+    protected static App|null $instance = null;
 
     /**
      * @var []
      */
-    protected $config;
+    protected mixed $config;
 
     /**
      * @return static
@@ -59,7 +63,7 @@ class App
     /**
      * @return \yii\console\Application|\yii\web\Application
      */
-    public function getApp()
+    public function getApp(): \yii\web\Application|\yii\console\Application
     {
         return \Yii::$app;
     }
@@ -78,52 +82,55 @@ class App
     }
 
     /**
-     * @return \yii\db\Connection
+     * @return Connection
      */
-    public function getDb()
+    public function getDb(): Connection
     {
         return \Yii::$app->db;
     }
 
     /**
-     * @return \yii\caching\CacheInterface
+     * @return CacheInterface
      */
-    public function getCache()
+    public function getCache(): CacheInterface
     {
         return \Yii::$app->cache;
     }
 
     /**
-     * @return \yii\web\IdentityInterface
+     * @return IdentityInterface
      */
-    public function getCurrentUser()
+    public function getCurrentUser(): IdentityInterface
     {
         return \Yii::$app->user->identity;
     }
 
     /**
-     * @return \yii\base\Module
+     * @return Module
      */
-    public function getCurrentModule()
+    public function getCurrentModule(): Module
     {
         return \Yii::$app->controller->module;
     }
 
-    public function getFaceDomain()
+    public function getFaceDomain(): string
     {
         return \Yii::$app->params['domains']['face'];
     }
 
     /**
+     * @param string $message
      * @param string $type
-     * @param        $message
      */
-    public function setFlash($type = 'success', $message)
+    public function setFlash(string $message, $type = 'success'): void
     {
         \Yii::$app->getSession()->setFlash($type, $message);
     }
 
-    public function getFlashes()
+    /**
+     * @return array
+     */
+    public function getFlashes(): array
     {
         return \Yii::$app->getSession()->getAllFlashes();
     }

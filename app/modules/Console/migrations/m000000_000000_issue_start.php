@@ -7,22 +7,26 @@ use App\Models\User;
 
 class m000000_000000_issue_start extends Migration
 {
-    public function safeUp()
+    /**
+     * @throws InvalidConfigException
+     */
+    public function safeUp(): void
     {
         $this->createTable('{{%user}}', [
             'id'                   => $this->primaryKey(),
             'username'             => $this->string()->notNull()->unique(),
+            'fio'                  => $this->string(1024)->notNull(),
             'auth_key'             => $this->string(32)->notNull(),
             'access_token'         => $this->string(16)->notNull()->unique(),
             'password_hash'        => $this->string()->notNull(),
             'password_reset_token' => $this->string()->notNull()->unique(),
             'email'                => $this->string()->notNull()->unique(),
-            'type'                 => $this->smallInteger()->defaultValue(User::TYPE_ADMIN),
+            'type'                 => $this->smallInteger()->defaultValue(User::TYPE_USER),
             'status'               => $this->smallInteger()->defaultValue(User::STATUS_ACTIVE),
             'date_created'         => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'date_updated'         => $this->timestamp(),
             'date_last_visit'      => $this->timestamp(),
-            'create_user_id'       => $this->integer(),
+            'create_user_id'       => $this->integer()->null(),
         ]);
 
         /** @var DbManager $authManager */
@@ -68,7 +72,10 @@ class m000000_000000_issue_start extends Migration
         ], $tableOptions);
     }
 
-    public function safeDown()
+    /**
+     * @throws InvalidConfigException
+     */
+    public function safeDown(): void
     {
         $this->dropTable('{{%user}}');
 
@@ -85,7 +92,7 @@ class m000000_000000_issue_start extends Migration
      * @return \yii\rbac\ManagerInterface
      * @throws InvalidConfigException
      */
-    protected function getAuthManager()
+    protected function getAuthManager(): \yii\rbac\ManagerInterface
     {
         $authManager = Yii::$app->getAuthManager();
         if (!$authManager instanceof DbManager) {

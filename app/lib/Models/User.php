@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-
 use App\Behaviors\Timestamp;
 use App\ActiveRecord;
+use Yii;
 use yii\web\IdentityInterface;
 
 /**
@@ -28,17 +28,18 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
 
-    const TYPE_PUBLISHER = 1;
-    const TYPE_ADMIN     = 2;
+    public const TYPE_GUEST = 1;
+
+    public const TYPE_USER  = 2;
     /**
      * @see OutContainer::USER_STATUS_ACTIVE
      */
-    const STATUS_ACTIVE = 1;
+    public const STATUS_ACTIVE = 1;
 
     /** Забанен/выключен */
-    const STATUS_BANNED = 2;
+    public const STATUS_BANNED = 2;
 
-    const PASSWORD_RESET_TOKEN_TTL = 3600;
+    public const PASSWORD_RESET_TOKEN_TTL = 3600;
 
     /**
      * Массив урлов главной страницы приложений каждого типа пользователя
@@ -46,8 +47,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     protected $base_url
         = [
-            self::TYPE_PUBLISHER => '/publisher/',
-            self::TYPE_ADMIN     => '/admin/',
+            self::TYPE_GUEST => '/publisher/',
+            self::TYPE_USER     => '/admin/',
         ];
 
     /**
@@ -55,7 +56,7 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             // Уникальные поля
@@ -97,22 +98,26 @@ class User extends ActiveRecord implements IdentityInterface
      * Поведения для дат
      * @return array
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
-            Timestamp::className(),
+            Timestamp::class,
         ];
     }
 
     /**
      * @return string
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return 'user';
     }
 
-    public static function findIdentity($id)
+    /**
+     * @param $id
+     * @return void
+     */
+    public static function findIdentity($id): ?ActiveRecord
     {
         return self::findOne($id);
     }
@@ -123,12 +128,12 @@ class User extends ActiveRecord implements IdentityInterface
      * @param null  $type
      * @return bool
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public static function findIdentityByAccessToken($token, $type = null): bool
     {
         return false;
     }
 
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -137,7 +142,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Метод для
      * @return string
      */
-    public function getAuthKey()
+    public function getAuthKey(): string
     {
         return $this->auth_key;
     }
@@ -147,7 +152,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $authKey
      * @return bool
      */
-    public function validateAuthKey($authKey)
+    public function validateAuthKey($authKey): bool
     {
         return $this->auth_key === $authKey;
     }
@@ -157,25 +162,25 @@ class User extends ActiveRecord implements IdentityInterface
      *
      * @param string $password
      */
-    public function setPassword($password)
+    public function setPassword($password): void
     {
-        $this->password_hash = \Yii::$app->security->generatePasswordHash($password);
+        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
     /**
      * Генерируем и устанавдиваем auth_key
      */
-    public function generateAuthKey()
+    public function generateAuthKey(): void
     {
-        $this->auth_key = \Yii::$app->security->generateRandomString();
+        $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
     /**
      * Генерируем и устанавдиваем auth_key
      */
-    public function generateAccessToken()
+    public function generateAccessToken(): void
     {
-        $this->access_token = \Yii::$app->security->generateRandomString(16);
+        $this->access_token = Yii::$app->security->generateRandomString(16);
     }
 
     /**
@@ -183,16 +188,16 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $password
      * @return bool
      */
-    public function validatePassword($password)
+    public function validatePassword($password): bool
     {
-        return \Yii::$app->security->validatePassword($password, $this->password_hash);
+        return Yii::$app->security->validatePassword($password, $this->password_hash);
     }
 
     /**
      * Возвращает ссылку на главное приложение
      * @return string
      */
-    public function getBaseUrl()
+    public function getBaseUrl(): string
     {
         return $this->base_url[$this->type];
     }
@@ -202,7 +207,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token
      * @return boolean
      */
-    public static function isPasswordResetTokenValid($token)
+    public static function isPasswordResetTokenValid($token): bool
     {
         if (empty($token)) {
             return false;
@@ -216,9 +221,9 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Генерируем и устанавливаем токен для сброса пароля
      */
-    public function generatePasswordResetToken()
+    public function generatePasswordResetToken(): void
     {
-        $this->password_reset_token = \Yii::$app->security->generateRandomString() . '_' . time();
+        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
     /**
@@ -227,7 +232,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $token
      * @return null|self()
      */
-    public static function findByResetToken($token)
+    public static function findByResetToken($token): ?User
     {
         if (!static::isPasswordResetTokenValid($token)) {
             return null;

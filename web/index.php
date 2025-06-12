@@ -7,6 +7,8 @@ defined('BASE_PATH') or define('BASE_PATH', dirname(__DIR__) . '/app/modules/Mai
 
 require(__DIR__ . '/../vendor/autoload.php');
 require(__DIR__ . '/../vendor/yiisoft/yii2/Yii.php');
+
+
 require(dirname(__DIR__). '/app/config/bootstrap.php');
 
 $config = \App\App::i()->getConfig();

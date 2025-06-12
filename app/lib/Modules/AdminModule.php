@@ -39,7 +39,7 @@ class AdminModule extends Module
                     ],
                     [
                         'allow' => true,
-                        'roles' => [User::TYPE_ADMIN],
+                        'roles' => [User::TYPE_USER],
                     ],
                 ],
                 'denyCallback' => function () {
