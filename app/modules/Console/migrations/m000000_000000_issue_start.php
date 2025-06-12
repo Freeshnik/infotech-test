@@ -21,7 +21,7 @@ class m000000_000000_issue_start extends Migration
             'password_hash'        => $this->string()->notNull(),
             'password_reset_token' => $this->string()->notNull()->unique(),
             'email'                => $this->string()->notNull()->unique(),
-            'type'                 => $this->smallInteger()->defaultValue(User::TYPE_USER),
+            'type'                 => $this->smallInteger()->defaultValue(User::TYPE_GUEST),
             'status'               => $this->smallInteger()->defaultValue(User::STATUS_ACTIVE),
             'date_created'         => $this->timestamp()->defaultExpression('CURRENT_TIMESTAMP'),
             'date_updated'         => $this->timestamp(),

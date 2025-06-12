@@ -243,4 +243,13 @@ class User extends ActiveRecord implements IdentityInterface
             'status'               => self::STATUS_ACTIVE,
         ]);
     }
+
+    /**
+     * @param $username
+     * @return User|null
+     */
+    public static function findByUsername($username): ?User
+    {
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
 }

@@ -5,6 +5,7 @@ use yii\db\Migration;
 class m250612_082006_book extends Migration
 {
     public string $tableName = '{{%book}}';
+    public string $fkBookAuthor = 'fk_book_author-id';
 
     public function safeUp(): void
     {
@@ -21,7 +22,7 @@ class m250612_082006_book extends Migration
         ]);
 
         $this->addForeignKey(
-            'fk_book_author-id',
+            $this->fkBookAuthor,
             $this->tableName,
             'author_id',
             '{{%author}}',
@@ -31,7 +32,7 @@ class m250612_082006_book extends Migration
 
     public function safeDown()
     {
-        $this->dropForeignKey('fk_book_author', $this->tableName);
+        $this->dropForeignKey($this->fkBookAuthor, $this->tableName);
         $this->dropTable($this->tableName);
     }
 }
