@@ -3,14 +3,14 @@
 namespace App\Helpers;
 
 
-class Url
+class Url extends \yii\helpers\Url
 {
     /**
      * Валиден ли урл
      * @param $url
-     * @return mixed
+     * @return bool
      */
-    public static function isValid($url)
+    public static function isValid($url): bool
     {
         return filter_var($url, FILTER_VALIDATE_URL) !== false;
     }
@@ -20,7 +20,7 @@ class Url
      * @param $url
      * @return string
      */
-    public static function makeValid($url)
+    public static function makeValid($url): string
     {
         if (!preg_match("~^(?:f|ht)tps?://~i", $url)) {
             $url = "http://" . $url;
@@ -29,7 +29,11 @@ class Url
         return $url;
     }
 
-    public static function getHost($url)
+    /**
+     * @param $url
+     * @return array|string|null
+     */
+    public static function getHost($url): array|string|null
     {
         $host = parse_url($url, PHP_URL_HOST);
         return preg_replace('/^www\./', '', $host);

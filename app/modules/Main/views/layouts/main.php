@@ -35,8 +35,9 @@ use yii\widgets\Breadcrumbs;
 
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Authors', 'url' => ['/author']], // <-- Ваш пункт
-        ['label' => 'Books', 'url' => ['/book']],     // <-- Ваш пункт
+        ['label' => 'Авторы', 'url' => ['/author']],
+        ['label' => 'Книги', 'url' => ['/book']],
+        ['label' => 'Отчет', 'url' => ['/report']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

@@ -10,7 +10,7 @@ use yii\grid\GridView;
 /** @var App\Models\AuthorSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Authors';
+$this->title = 'Авторы';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="author-index">
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'fio',
-            'description:ntext',
+            'description:text',
             'date_created',
             'date_updated',
             [
