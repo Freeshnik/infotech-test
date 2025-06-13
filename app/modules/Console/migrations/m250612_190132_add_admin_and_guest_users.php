@@ -16,6 +16,7 @@ class m250612_190132_add_admin_and_guest_users extends Migration
             [
                 'username',
                 'fio',
+                'phone',
                 'password_hash',
                 'password_reset_token',
                 'auth_key',
@@ -26,8 +27,9 @@ class m250612_190132_add_admin_and_guest_users extends Migration
             ],
             [
                 [
-                    'admin', // username
+                    'admin',
                     'Админ Админович',
+                    '+79001000000',
                     Yii::$app->security->generatePasswordHash('admin'),
                     Yii::$app->security->generateRandomString(),
                     Yii::$app->security->generateRandomString(),
@@ -37,8 +39,9 @@ class m250612_190132_add_admin_and_guest_users extends Migration
                     User::TYPE_USER,
                 ],
                 [
-                    'guest', // username
+                    'guest',
                     'Гость Гостевич',
+                    '+79001005050',
                     Yii::$app->security->generatePasswordHash('guest'),
                     Yii::$app->security->generateRandomString(),
                     Yii::$app->security->generateRandomString(),

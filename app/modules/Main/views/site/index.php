@@ -7,6 +7,6 @@ $this->title = 'Yii2 framework main module';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Welcome to main module!</h1>
+        <h1>Книги</h1>
     </div>
 </div>

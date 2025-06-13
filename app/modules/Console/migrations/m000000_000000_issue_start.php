@@ -16,6 +16,7 @@ class m000000_000000_issue_start extends Migration
             'id'                   => $this->primaryKey(),
             'username'             => $this->string()->notNull()->unique(),
             'fio'                  => $this->string(1024)->notNull(),
+            'phone'                => $this->string(12)->notNull(),
             'auth_key'             => $this->string(32)->notNull(),
             'access_token'         => $this->string(16)->notNull()->unique(),
             'password_hash'        => $this->string()->notNull(),

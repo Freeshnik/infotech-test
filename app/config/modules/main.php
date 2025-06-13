@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\User;
+
 $config = [
     'id' => 'yii',
-    'language' => 'en-US',
+    'language' => 'ru-RU',
     'controllerNamespace' => 'Main\Controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -33,7 +35,7 @@ $config = [
             'errorAction' => 'error/error',
         ],
         'user' => [
-            'identityClass' => \App\Models\User::class,
+            'identityClass' => User::class,
             'enableAutoLogin' => true,
             'loginUrl' => '/login'
         ],

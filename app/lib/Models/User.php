@@ -11,6 +11,8 @@ use yii\web\IdentityInterface;
  * Class User
  * @property int         $id                - ID
  * @property string      $username          - username
+ * @property string      $fio               - ФИО
+ * @property string      $phone             - номер телефона в формате +79001005050
  * @property string      $auth_key          - ключ для автологина
  * @property string      $access_token      - ключ для доступа по Api
  * @property string      $password_hash     - зашифрованый пароль
@@ -120,6 +122,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findIdentity($id): ?ActiveRecord
     {
         return self::findOne($id);
+    }
+
+    /** Типы юзеров
+     * @return string[]
+     */
+    public static function getTypes(): array
+    {
+        return [
+            self::TYPE_GUEST => 'Гость',
+            self::TYPE_USER  => 'Пользователь',
+        ];
     }
 
     /**

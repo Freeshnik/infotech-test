@@ -33,4 +33,12 @@ class AuthorRepo extends Repository
             ->asArray()
             ->all();
     }
+
+    /** Возвращает все годы, в которых были изданы книги
+     * @return array
+     */
+    public function getAllYears(): array
+    {
+        return Book::find()->select('year')->orderBy(['year' => SORT_ASC])->distinct()->column();
+    }
 }
