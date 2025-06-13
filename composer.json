@@ -14,8 +14,11 @@
     "bower-asset/select2": "v4.0.4",
     "dmstr/yii2-adminlte-asset": "2.*",
     "geoip2/geoip2": "^2.3",
+    "guzzlehttp/guzzle": "^7.9",
     "yiisoft/yii2": "^2.0.51",
     "yiisoft/yii2-bootstrap": "~2.0.11",
+    "yiisoft/yii2-queue": "^2.3",
+    "yiisoft/yii2-redis": "^2.0",
     "yiisoft/yii2-swiftmailer": "^2.1"
   },
   "require-dev": {

@@ -1,12 +1,13 @@
 <?php
 
+use yii\queue\redis\Queue;
 use yii\swiftmailer\Mailer;
 use yii\log\FileTarget;
 use yii\db\Connection;
 use yii\rbac\DbManager;
 
 $config = [
-    'bootstrap'  => ['log'],
+    'bootstrap'  => ['log', 'queue'],
     'vendorPath' => dirname(__DIR__, 2) . '/vendor',
     'basePath'   => BASE_PATH,
     'timeZone'   => 'Europe/Moscow',
@@ -17,7 +18,7 @@ $config = [
             'targets'    => [
                 [
                     'class'  => FileTarget::class,
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'info'],
                 ],
             ],
         ],
@@ -41,12 +42,23 @@ $config = [
 //        'cache'       => [
 //            'class' => \yii\caching\FileCache::class,
 //        ],
-        'cache' => [ // Redis
+        'queue' => [
+            'class' => Queue::class,
+            'redis' => 'redis',
+            'channel' => 'queue',
+        ],
+        'redis' => [ // Разные БД для кэша и очередей
+            'class' => \yii\redis\Connection::class,
+            'hostname' => 'yii2-redis',
+            'database' => 1,
+            'port' => 6379,
+            'retries' => 1,
+        ],
+        'cache' => [
             'class' => \App\Cache\Redis::class,
             'host' => 'yii2-redis',
             'database' => 0,
             'port' => 6379,
-            'password' => '',
         ],
     ],
     'params'     => require(__DIR__ . '/params.php'),

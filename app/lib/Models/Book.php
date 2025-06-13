@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\ActiveRecord;
+use App\Behaviors\Book\NewBookNotifyBehavior;
 use App\Behaviors\Timestamp;
 use Yii;
 use yii\db\ActiveQuery;
@@ -38,6 +39,7 @@ class Book extends ActiveRecord
     {
         return array_merge(parent::behaviors(), [
             Timestamp::class,
+            NewBookNotifyBehavior::class,
         ]);
     }
 
