@@ -2,34 +2,19 @@
 
 namespace Main\Controllers;
 
+use App\Controller\MainController;
 use App\Models\Book;
 use App\Models\BookSearch;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use App\Models\User;
+use Yii;
 use yii\filters\VerbFilter;
+use yii\web\NotFoundHttpException;
 
 /**
  * BookController implements the CRUD actions for Book model.
  */
-class BookController extends Controller
+class BookController extends MainController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
 
     /**
      * Lists all Book models.
@@ -41,9 +26,12 @@ class BookController extends Controller
         $searchModel = new BookSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
+        $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'canManage' => $canManage,
         ]);
     }
 
@@ -55,8 +43,11 @@ class BookController extends Controller
      */
     public function actionView($id)
     {
+        $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'canManage' => $canManage,
         ]);
     }
 

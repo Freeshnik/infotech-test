@@ -2,35 +2,18 @@
 
 namespace Main\Controllers;
 
+use App\Controller\MainController;
 use App\Models\Author;
 use App\Models\AuthorSearch;
-use yii\web\Controller;
+use App\Models\User;
+use Yii;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * AuthorController implements the CRUD actions for Author model.
  */
-class AuthorController extends Controller
+class AuthorController extends MainController
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors(): array
-    {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::class,
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
-    }
-
     /**
      * Lists all Author models.
      *
@@ -41,9 +24,12 @@ class AuthorController extends Controller
         $searchModel = new AuthorSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
+        $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'canManage' => $canManage,
         ]);
     }
 
@@ -55,8 +41,11 @@ class AuthorController extends Controller
      */
     public function actionView(int $id): string
     {
+        $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'canManage' => $canManage,
         ]);
     }
 
@@ -65,7 +54,7 @@ class AuthorController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
-    public function actionCreate():Response|string
+    public function actionCreate()
     {
         $model = new Author();
 

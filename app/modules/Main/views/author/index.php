@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var App\Models\AuthorSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var bool $canManage */
 
 $this->title = 'Авторы';
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,7 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Author', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php if ($canManage): ?>
+            <?= Html::a('Create Author', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -38,7 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::class,
                 'urlCreator' => static function ($action, Author $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                 },
+                'visibleButtons' => [
+                    'update' => $canManage,
+                    'delete' => $canManage,
+                    // кнопка 'view' видна всегда по умолчанию
+                ]
             ],
         ],
     ]); ?>

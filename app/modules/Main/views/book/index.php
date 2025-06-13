@@ -9,6 +9,7 @@ use yii\grid\GridView;
 /** @var yii\web\View $this */
 /** @var App\Models\BookSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var bool $canManage */
 
 $this->title = 'Книги';
 $this->params['breadcrumbs'][] = $this->title;
@@ -18,7 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php if ($canManage): ?>
+            <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -64,10 +67,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'date_created',
             //'date_updated',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Book $model, $key, $index, $column) {
+                'class' => ActionColumn::class,
+                'urlCreator' => static function ($action, Book $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                 },
+                'visibleButtons' => [
+                    'update' => $canManage,
+                    'delete' => $canManage,
+                ]
             ],
         ],
     ]); ?>
