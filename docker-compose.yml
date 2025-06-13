@@ -80,32 +80,6 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
-  infotech_test-rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: infotech_test-mq
-    hostname: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
-      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
-    ports:
-      - "${RABBITMQ_PORT}:5672"
-      - "${RABBITMQ_UI_PORT}:15672"
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-      - rabbitmq_log:/var/log/rabbitmq
-    networks:
-      app-network:
-        ipv4_address: 172.22.0.5
-    # Зависимость от PostgreSQL, если RabbitMQ должен запускаться после него
-    depends_on:
-      yii2-percona:
-        condition: service_healthy
-    healthcheck:
-      test: [ "CMD", "rabbitmq-diagnostics", "ping" ]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-
   infotech_test-nginx:
     image: nginx:alpine
     container_name: infotech_test-nginx
@@ -126,7 +100,4 @@ services:
 
 volumes:
   percona_data:
-#  redis_data:
   redis_data:
-  rabbitmq_data:
-  rabbitmq_log:

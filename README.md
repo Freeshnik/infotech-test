@@ -1,11 +1,32 @@
+INFOTECH test task
+-------------------
+Установка
+-------------------
+Скопируйте файл окружения:
+~~~
+cp .env.dist .env
+~~~
+
+Установите PHP-пакеты с помощью Composer:
+~~~
+docker run --rm -v $(pwd):/app composer install --ignore-platform-reqs
+~~~
+
+Запустите сборку и контейнеры Docker:
+~~~
+docker compose up -d --build
+~~~
+
+Выполните миграции базы данных:
+~~~
+docker exec -it yii2-php php yii migrate --interactive=0
+~~~
+
+Можно открыть [Localhost](http://localhost/)
+
 Yii2 Basic Project Template turned into mono repository
 -------------------
 
-TODO:
-- docker-compose.yml
-- tests
-- Static analysis
-- CS fixer
 
 <hr>
 <p align="center">
