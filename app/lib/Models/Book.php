@@ -31,7 +31,7 @@ class Book extends ActiveRecord
      */
     public static function tableName(): string
     {
-        return 'book';
+        return '{{%book}}';
     }
 
     public function behaviors(): array
@@ -66,7 +66,7 @@ class Book extends ActiveRecord
             'id' => 'ID',
             'title' => 'Название',
             'year' => 'Год выпуска',
-            'author_id' => 'ID автора',
+            'author_id' => 'Автор',
             'description' => 'Описание',
             'isbn' => 'ISBN',
             'photo_path' => 'Путь к фото обложки',

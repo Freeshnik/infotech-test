@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var App\Models\Book $model */
 /** @var yii\widgets\ActiveForm $form */
+/** @var array $allAuthors */
 ?>
 
 <div class="book-form">
@@ -16,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'year')->textInput() ?>
 
-    <?= $form->field($model, 'author_id')->textInput() ?>
+    <?= $form->field($model, 'author_id')->dropDownList($allAuthors) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

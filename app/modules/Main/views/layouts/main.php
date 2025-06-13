@@ -26,7 +26,7 @@ use yii\widgets\Breadcrumbs;
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Site',
+        'brandLabel' => 'Главная',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -34,7 +34,6 @@ use yii\widgets\Breadcrumbs;
     ]);
 
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Авторы', 'url' => ['/author']],
         ['label' => 'Книги', 'url' => ['/book']],
         ['label' => 'Отчет', 'url' => ['/report']],

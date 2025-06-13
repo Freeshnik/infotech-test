@@ -4,6 +4,7 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var App\Models\Book $model */
+/** @var array $allAuthors */
 
 $this->title = 'Создать книгу';
 $this->params['breadcrumbs'][] = ['label' => 'Книги', 'url' => ['index']];
@@ -15,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'allAuthors' => $allAuthors,
     ]) ?>
 
 </div>

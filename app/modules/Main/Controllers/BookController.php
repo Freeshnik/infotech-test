@@ -3,6 +3,7 @@
 namespace Main\Controllers;
 
 use App\Controller\MainController;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\BookSearch;
 use App\Models\User;
@@ -68,8 +69,11 @@ class BookController extends MainController
             $model->loadDefaultValues();
         }
 
+        $allAuthors = Author::find()->select(['fio'])->indexBy('id')->asArray()->column();
+
         return $this->render('create', [
             'model' => $model,
+            'allAuthors' => $allAuthors,
         ]);
     }
 

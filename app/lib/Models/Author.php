@@ -17,6 +17,8 @@ use yii\db\ActiveQuery;
  * @property string|null $date_updated
  *
  * @property-read Book[] $books
+ * @property-read SubscribeAuthor|null $userSubscription The current user's subscription. Null if not subscribed or guest.
+ * @property-read bool $isSubscribedByCurrentUser Virtual property to check subscription status.
  */
 class Author extends ActiveRecord
 {
@@ -26,7 +28,7 @@ class Author extends ActiveRecord
      */
     public static function tableName(): string
     {
-        return 'author';
+        return '{{%author}}';
     }
 
     public function behaviors(): array
@@ -74,4 +76,24 @@ class Author extends ActiveRecord
         return $this->hasMany(Book::class, ['author_id' => 'id']);
     }
 
+    /**
+     * @return ActiveQuery
+     */
+    public function getUserSubscription(): ActiveQuery
+    {
+        if (Yii::$app->user->isGuest) {
+            return $this->hasOne(SubscribeAuthor::class, ['author_id' => 'id'])->where('1=0');
+        }
+
+        return $this->hasOne(SubscribeAuthor::class, ['author_id' => 'id'])
+            ->andOnCondition(['user_id' => Yii::$app->user->id]);
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsSubscribedByCurrentUser(): bool
+    {
+        return $this->userSubscription !== null;
+    }
 }
