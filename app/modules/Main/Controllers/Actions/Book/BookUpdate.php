@@ -21,7 +21,7 @@ class BookUpdate extends WebAction
     public function run(string|int|null $id): Response|string
     {
         /** @var  $model Book */
-        $model = $this->findModel($id, Book::class);
+        $model = $this->findModel(Book::class, $id);
 
         if ($this->getRequest()->isPost && $model->load($this->getRequest()->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

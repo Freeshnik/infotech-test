@@ -19,7 +19,7 @@ class BookDelete extends WebAction
      */
     public function run(string|int|null $id): Response
     {
-        $this->findModel($id, Book::class)->delete();
+        $this->findModel(Book::class, $id)->delete();
 
         return $this->redirect(['index']);
     }

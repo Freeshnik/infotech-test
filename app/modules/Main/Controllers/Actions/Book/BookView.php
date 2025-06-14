@@ -23,7 +23,7 @@ class BookView extends WebAction
         $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
 
         return $this->render('view', [
-            'model' => $this->findModel($id, Book::class),
+            'model' => $this->findModel(Book::class, $id),
             'canManage' => $canManage,
         ]);
     }

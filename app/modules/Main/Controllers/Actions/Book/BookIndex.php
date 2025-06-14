@@ -2,26 +2,36 @@
 
 namespace Main\Controllers\Actions\Book;
 
+use Yii;
 use App\Base\WebAction;
 use App\Models\BookSearch;
 use App\Models\User;
-use Yii;
+use Main\Controllers\BookController;
 
 
 class BookIndex extends WebAction
 {
+    public function __construct(
+        string $id,
+        BookController $controller,
+        private readonly BookSearch $bookSearch,
+        array $config = [],
+    )
+    {
+        parent::__construct($id, $controller, $config);
+    }
+
     /**
      * @return string
      */
     public function run(): string
     {
-        $searchModel = new BookSearch();
-        $dataProvider = $searchModel->search($this->getRequest()->getQueryParams());
+        $dataProvider = $this->bookSearch->search($this->getRequest()->getQueryParams());
 
         $canManage = !Yii::$app->user->isGuest && Yii::$app->user->identity->type === User::TYPE_USER;
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel' => $this->bookSearch,
             'dataProvider' => $dataProvider,
             'canManage' => $canManage,
         ]);

@@ -81,7 +81,7 @@ abstract class WebAction extends BaseAction
      * @return ActiveRecord the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel(int $id, $className): ActiveRecord
+    protected function findModel($className, int $id,): ActiveRecord
     {
         if (($model = $className::findOne(['id' => $id])) !== null) {
             return $model;
