@@ -2,15 +2,21 @@
 
 namespace App\Controller;
 
-use App\App;
-use App\Models\User;
-use Yii;
-use yii\filters\AccessControl;
+use OpenApi\Attributes as OA;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
 /** Родительский контроллер для API модуля */
+#[OA\Info(
+    version: "1.0.0",
+    description: "API documentation for my application",
+    title: "My API"
+)]
+#[OA\Server(
+    url: "http://localhost/api",
+    description: "Development server"
+)]
 class ApiController extends ActiveController
 {
     public function behaviors(): array

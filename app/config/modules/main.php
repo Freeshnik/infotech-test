@@ -44,7 +44,9 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 'admin/introduce' => 'admin/auth/login',
-                'logout' => '/auth/logout'
+                'logout' => '/auth/logout',
+                'api-docs' => 'swagger-ui/index',
+                'api-docs/json' => 'swagger-ui/json',
             ],
         ],
 

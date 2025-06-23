@@ -20,7 +20,8 @@
     "yiisoft/yii2-bootstrap": "~2.0.11",
     "yiisoft/yii2-queue": "^2.3",
     "yiisoft/yii2-redis": "^2.0",
-    "yiisoft/yii2-swiftmailer": "^2.1"
+    "yiisoft/yii2-swiftmailer": "^2.1",
+    "zircote/swagger-php": "^5.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
