@@ -34,6 +34,7 @@ $config = [
         ],
         'authManager' => [
             'class' => DbManager::class,
+            'cache' => 'cache',
         ],
         'mailer'      => [
             'class'            => Mailer::class,

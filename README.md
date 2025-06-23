@@ -22,7 +22,7 @@ docker compose up -d --build
 docker exec -it yii2-php php yii migrate --interactive=0
 ~~~
 
-Можно открыть [Localhost](http://localhost/)
+Можно открыть [Localhost](http://localhost/), API: [Localhost:8080](http://localhost:8080/)
 
 Yii2 Basic Project Template turned into mono repository
 -------------------

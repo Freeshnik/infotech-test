@@ -136,14 +136,15 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Пока так, когда будем делать api - это заработает
      * @param mixed $token
-     * @param null  $type
-     * @return bool
+     * @param null $type
+     * @return User|null
      */
-    public static function findIdentityByAccessToken($token, $type = null): bool
+    public static function findIdentityByAccessToken($token, $type = null): ?User
     {
-        return false;
+        $token = preg_replace('/[^a-zA-Z0-9\_\-\.]+/i', '', $token);
+
+        return self::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
     }
 
     public function getId(): ?int

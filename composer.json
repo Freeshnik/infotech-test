@@ -59,7 +59,7 @@
   "autoload": {
     "psr-4": {
       "Console\\": "app/modules/Console/",
-      "Admin\\": "app/modules/Admin",
+      "Api\\": "app/modules/Api/",
       "Main\\": "app/modules/Main/",
       "App\\": "app/lib/",
       "tests\\": "tests/"
