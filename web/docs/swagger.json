@@ -15,13 +15,13 @@
         "/book": {
             "get": {
                 "tags": [
-                    "Users"
+                    "Books"
                 ],
-                "summary": "Get list of books",
+                "summary": "Список книг",
                 "operationId": "1ce76a29d5860d9e6ac9b8dbae93f934",
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "Успешный ответ",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -42,14 +42,60 @@
             "Book": {
                 "title": "Book",
                 "description": "Book model",
+                "properties": {
+                    "id": {
+                        "description": "ID",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Название книги",
+                        "type": "string",
+                        "example": "Vel assumenda eum"
+                    },
+                    "year": {
+                        "description": "Год издания",
+                        "type": "integer",
+                        "example": 2014
+                    },
+                    "description": {
+                        "description": "Описание книги",
+                        "type": "string",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "isbn": {
+                        "description": "ISBN",
+                        "type": "string",
+                        "example": "9783264097399"
+                    },
+                    "photo_path": {
+                        "description": "Путь к обложке книги",
+                        "type": "string",
+                        "example": "/img/book_image.jpg"
+                    },
+                    "date_created": {
+                        "description": "Дата создания записи",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2022-10-23 07:51:37"
+                    },
+                    "date_updated": {
+                        "description": "Дата обновления записи",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": null,
+                        "nullable": true
+                    }
+                },
                 "type": "object"
             }
         }
     },
     "tags": [
         {
-            "name": "Users",
-            "description": "Users"
+            "name": "Books",
+            "description": "Books"
         }
     ]
 }
