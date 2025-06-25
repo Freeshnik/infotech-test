@@ -62,7 +62,7 @@ use OpenApi\Attributes as OA;
             format: "datetime",
             example: null,
             nullable: true
-        )
+        ),
     ],
     type: "object"
 )]

@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use Yii;
 use App\App;
 use App\Models\User;
+use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -25,7 +25,7 @@ class MainController extends Controller
                             'roles' => ['?'], // Guest users
                             'denyCallback' => function () {
                                 throw App::i()->getResponse()->set403('Нет доступа');
-                            }
+                            },
                         ],
                         [
                             'allow' => true,

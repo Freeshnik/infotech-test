@@ -11,12 +11,13 @@ use yii\web\Response;
 
 class BookUpdate extends WebAction
 {
-
     /**
      * Displays a single Book model.
+     *
      * @param string|int|null $id ID
      * @return Response|string
-     * @throws NotFoundHttpException|Exception
+     * @throws Exception
+     * @throws NotFoundHttpException
      */
     public function run(string|int|null $id): Response|string
     {

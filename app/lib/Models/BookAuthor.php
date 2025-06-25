@@ -17,8 +17,6 @@ use yii\db\ActiveQuery;
  */
 class BookAuthor extends \App\ActiveRecord
 {
-
-
     /**
      * {@inheritdoc}
      */
@@ -73,5 +71,4 @@ class BookAuthor extends \App\ActiveRecord
     {
         return $this->hasOne(Book::class, ['id' => 'book_id']);
     }
-
 }

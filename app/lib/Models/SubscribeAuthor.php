@@ -7,7 +7,6 @@ use yii\db\ActiveQuery;
 /**
  * @info Модель для отслеживания подписки на автора
  * This is the model class for table "subscribe_author".
- *
  * @property int $id
  * @property int $author_id
  * @property int $user_id
@@ -18,7 +17,6 @@ use yii\db\ActiveQuery;
  */
 class SubscribeAuthor extends \App\ActiveRecord
 {
-
     /**
      * {@inheritdoc}
      */
@@ -74,5 +72,4 @@ class SubscribeAuthor extends \App\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
-
 }

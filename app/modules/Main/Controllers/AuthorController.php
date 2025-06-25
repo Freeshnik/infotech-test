@@ -35,6 +35,7 @@ class AuthorController extends MainController
 
     /**
      * Displays a single Author model.
+     *
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -52,6 +53,7 @@ class AuthorController extends MainController
     /**
      * Creates a new Author model.
      * If creation is successful, the browser will be redirected to the 'view' page.
+     *
      * @return string|\yii\web\Response
      */
     public function actionCreate()
@@ -74,6 +76,7 @@ class AuthorController extends MainController
     /**
      * Updates an existing Author model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
@@ -94,6 +97,7 @@ class AuthorController extends MainController
     /**
      * Deletes an existing Author model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param int $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException
@@ -108,6 +112,7 @@ class AuthorController extends MainController
     /**
      * Finds the Author model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
      * @return Author the loaded model
      * @throws NotFoundHttpException if the model cannot be found

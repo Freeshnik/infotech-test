@@ -4,7 +4,7 @@
     <description>Strict PSR12 code style standard</description>
 
     <arg name="basepath" value="."/>
-    <arg name="cache" value="./var/.phpcs-cache"/>
+    <arg name="cache" value="./php-cs-fixer.cache"/>
     <arg name="colors"/>
 
     <rule ref="PSR12">
@@ -306,6 +306,5 @@
     <exclude-pattern>*.js</exclude-pattern>
     <exclude-pattern>*.css</exclude-pattern>
     <exclude-pattern>*.json</exclude-pattern>
-    <exclude-pattern>*.conf</exclude-pattern>
     <exclude-pattern>*.conf</exclude-pattern>
 </ruleset>

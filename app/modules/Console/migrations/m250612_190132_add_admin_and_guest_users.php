@@ -12,7 +12,8 @@ class m250612_190132_add_admin_and_guest_users extends Migration
      */
     public function safeUp()
     {
-        $this->batchInsert($this->tableName,
+        $this->batchInsert(
+            $this->tableName,
             [
                 'username',
                 'fio',

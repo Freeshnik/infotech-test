@@ -4,7 +4,6 @@ namespace App\Models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use App\Models\Book;
 
 /**
  * BookSearch represents the model behind the search form of `App\Models\Book`.
@@ -36,7 +35,6 @@ class BookSearch extends Book
      *
      * @param array $params
      * @param string|null $formName Form name to be used into `->load()` method.
-     *
      * @return ActiveDataProvider
      */
     public function search($params, $formName = null): ActiveDataProvider

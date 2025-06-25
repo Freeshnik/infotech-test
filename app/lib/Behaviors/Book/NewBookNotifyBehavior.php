@@ -9,7 +9,6 @@ use yii\base\Behavior;
 use yii\db\BaseActiveRecord;
 
 /** Поведение для отправки уведомления о новой книге всем подписчикам автора
- * Class NewBookNotifyBehavior
  */
 class NewBookNotifyBehavior extends Behavior
 {
@@ -45,6 +44,7 @@ class NewBookNotifyBehavior extends Behavior
     }
 
     /** Создаёт и отправляет в очередь задачу об уведомлении
+     *
      * @param int $userId
      * @return void
      */
@@ -52,7 +52,7 @@ class NewBookNotifyBehavior extends Behavior
     {
         $job = new NewBookSmsNotifyJob([
             'user_id' => $userId,
-            'book_id' => $bookId
+            'book_id' => $bookId,
         ]);
 
         Yii::$app->queue->push($job);

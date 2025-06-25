@@ -16,7 +16,7 @@ use Yii;
         new OA\Property(property: "book_count", description: "Количество книг автора за год", type: "integer", example: 10),
         new OA\Property(property: "year", description: "Год", type: "integer", example: 2010),
         new OA\Property(property: "author_id", description: "ID автора", type: "integer", example: 5),
-        new OA\Property(property: "fio", description: "ФИО автора", type: "string", example: "Абрам Владимирович Казаков")
+        new OA\Property(property: "fio", description: "ФИО автора", type: "string", example: "Абрам Владимирович Казаков"),
     ],
     type: "object"
 )]
@@ -39,7 +39,7 @@ use Yii;
             description: "Топ 10 авторов за выбранный год",
             type: "array",
             items: new OA\Items(ref: "#/components/schemas/ReportItem")
-        )
+        ),
     ],
     type: "object"
 )]
@@ -65,7 +65,7 @@ class ReportController extends RestController
     )]
     public function actionIndex(): array
     {
-        $selectedYear = (int) $this->request->getQueryParam ('year', 2010);
+        $selectedYear = (int) $this->request->getQueryParam('year', 2010);
 
         $service = Yii::createObject(ReportService::class, ['year' => $selectedYear]);
 

@@ -5,7 +5,6 @@ namespace App\Models;
 use App\ActiveRecord;
 use App\Behaviors\Book\NewBookNotifyBehavior;
 use App\Behaviors\Timestamp;
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveQuery;
 
@@ -20,7 +19,6 @@ use yii\db\ActiveQuery;
  * @property string|null $photo_path Путь фото обложки
  * @property string|null $date_created
  * @property string|null $date_updated
- *
  * @property-read Author[] $authors
  */
 class Book extends ActiveRecord
@@ -119,5 +117,4 @@ class Book extends ActiveRecord
             }
         }
     }
-
 }

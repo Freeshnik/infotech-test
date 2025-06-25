@@ -8,7 +8,6 @@ use App\Forms\User\LoginForm;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-
 $this->title = 'Авторизация';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

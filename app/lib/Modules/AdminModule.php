@@ -10,9 +10,9 @@ use yii\filters\AccessControl;
 
 class AdminModule extends Module
 {
-
     /**
      * Контроллер по умолчанию
+     *
      * @var string
      */
     public $defaultRoute = 'site';
@@ -29,13 +29,13 @@ class AdminModule extends Module
                         'allow'       => true,
                         'controllers' => ['admin/auth'],
                         'actions'     => ['login'],
-                        'roles'       => ['?']
+                        'roles'       => ['?'],
                     ],
                     [
                         'allow'       => true,
                         'controllers' => ['admin/site'],
                         'actions'     => ['logout'],
-                        'roles'       => ['@']
+                        'roles'       => ['@'],
                     ],
                     [
                         'allow' => true,
@@ -44,7 +44,7 @@ class AdminModule extends Module
                 ],
                 'denyCallback' => function () {
                     App::i()->getResponse()->set404();
-                }
+                },
             ],
         ];
     }
@@ -60,12 +60,12 @@ class AdminModule extends Module
                     [
                         'label' => 'Проверенный трафик',
                         'icon'  => 'fa fa-dashboard',
-                        'url'   => ['/admin/reports/index']
+                        'url'   => ['/admin/reports/index'],
                     ],
                     [
                         'label' => 'Статистика за текущий час',
                         'icon'  => 'fa fa-clock-o',
-                        'url'   => ['/admin/reports/realtime']
+                        'url'   => ['/admin/reports/realtime'],
                     ],
                     [
                         'label' => 'Весь трафик',
@@ -75,17 +75,17 @@ class AdminModule extends Module
                             [
                                 'label' => 'По паблишерам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/publishers']
+                                'url'   => ['/admin/reports/publishers'],
                             ],
                             [
                                 'label' => 'По дням',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/date']
+                                'url'   => ['/admin/reports/date'],
                             ],
                             [
                                 'label' => 'По платформам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/platform']
+                                'url'   => ['/admin/reports/platform'],
                             ],
                         ],
                     ],
@@ -97,27 +97,27 @@ class AdminModule extends Module
                             [
                                 'label' => 'По паблишерам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/publishers', Param::STAT_SOURCE => Param::SOURCE_PIXEL]
+                                'url'   => ['/admin/reports/publishers', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
                             ],
                             [
                                 'label' => 'По дням',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/date', Param::STAT_SOURCE => Param::SOURCE_PIXEL]
+                                'url'   => ['/admin/reports/date', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
                             ],
                             [
                                 'label' => 'По платформам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/platform', Param::STAT_SOURCE => Param::SOURCE_PIXEL]
+                                'url'   => ['/admin/reports/platform', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
                             ],
                         ],
                     ],
                     [
                         'label' => 'Проекты',
                         'icon'  => 'fa fa-list',
-                        'url'   => ['/admin/project']
+                        'url'   => ['/admin/project'],
                     ],
                 ],
-            ]
+            ],
         ];
     }
 }

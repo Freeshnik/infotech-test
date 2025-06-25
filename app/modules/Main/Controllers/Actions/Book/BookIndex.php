@@ -2,12 +2,11 @@
 
 namespace Main\Controllers\Actions\Book;
 
-use Yii;
 use App\Base\WebAction;
 use App\Models\BookSearch;
 use App\Models\User;
 use Main\Controllers\BookController;
-
+use Yii;
 
 class BookIndex extends WebAction
 {
@@ -16,8 +15,7 @@ class BookIndex extends WebAction
         BookController $controller,
         private readonly BookSearch $bookSearch,
         array $config = [],
-    )
-    {
+    ) {
         parent::__construct($id, $controller, $config);
     }
 

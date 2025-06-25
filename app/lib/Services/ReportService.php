@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Author;
 use App\Repositories\Author\AuthorRepo;
 use yii\data\ArrayDataProvider;
 

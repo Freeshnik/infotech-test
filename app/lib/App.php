@@ -10,7 +10,6 @@ use yii\web\IdentityInterface;
 
 class App
 {
-
     /**
      * @var App|null
      */
@@ -40,16 +39,16 @@ class App
     public function getConfig($module_name = MODULE_NAME)
     {
         if (empty($this->config[$module_name])) {
-            $app_config    = require(dirname(__DIR__) . '/config/config.php');
+            $app_config    = require dirname(__DIR__) . '/config/config.php';
             $module_config = $local_config = [];
 
             $config_file_module = dirname(__DIR__) . '/config/modules/' . $module_name . '.php';
             if (is_file($config_file_module) && is_readable($config_file_module)) {
-                $module_config = require(dirname(__DIR__) . '/config/modules/' . $module_name . '.php');
+                $module_config = require dirname(__DIR__) . '/config/modules/' . $module_name . '.php';
             }
             $config_file_local = dirname(__DIR__) . '/config/config_local.php';
             if (is_file($config_file_local) && is_readable($config_file_local)) {
-                $local_config = require(dirname(__DIR__) . '/config/config_local.php');
+                $local_config = require dirname(__DIR__) . '/config/config_local.php';
             }
             $this->config[$module_name] = ArrayHelper::merge(
                 $app_config,
@@ -134,5 +133,4 @@ class App
     {
         return \Yii::$app->getSession()->getAllFlashes();
     }
-
 }

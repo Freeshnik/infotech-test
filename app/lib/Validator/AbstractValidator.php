@@ -4,7 +4,6 @@ namespace App\Validator;
 
 abstract class AbstractValidator
 {
-
     /**
      * @var bool
      */
@@ -25,8 +24,7 @@ abstract class AbstractValidator
         return $this->is_valid;
     }
 
-    public abstract function getErrors();
+    abstract public function getErrors();
 
-    protected abstract function validate();
-
+    abstract protected function validate();
 }

@@ -2,18 +2,17 @@
 
 namespace Main\Controllers\Actions\Book;
 
-use Yii;
-use App\Models\Book;
 use App\Base\WebAction;
+use App\Models\Book;
 use App\Models\User;
+use Yii;
 use yii\web\NotFoundHttpException;
-
 
 class BookView extends WebAction
 {
-
     /**
      * Displays a single Book model.
+     *
      * @param string|int|null $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found

@@ -2,13 +2,11 @@
 
 namespace App\Behaviors;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
 class Timestamp extends TimestampBehavior
 {
-
     /**
      * Название поля с датой создания
      *

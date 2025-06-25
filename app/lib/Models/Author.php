@@ -16,14 +16,12 @@ use yii\db\ActiveQuery;
  * @property string|null $description
  * @property string|null $date_created
  * @property string|null $date_updated
- *
  * @property-read Book[] $books
  * @property-read SubscribeAuthor|null $userSubscription The current user's subscription. Null if not subscribed or guest.
  * @property-read bool $isSubscribedByCurrentUser Virtual property to check subscription status.
  */
 class Author extends ActiveRecord
 {
-
     /**
      * {@inheritdoc}
      */

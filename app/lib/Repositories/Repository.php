@@ -10,7 +10,6 @@ use yii\db\StaleObjectException;
 
 abstract class Repository implements RepositoryInterface
 {
-
     /**
      * @throws Exception
      */

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\App;
@@ -6,7 +7,6 @@ use yii\web\Controller;
 
 class BaseController extends Controller
 {
-
     public function beforeAction($action)
     {
         if ($this->getRequest()->isAjax()) {
@@ -40,5 +40,4 @@ class BaseController extends Controller
     {
         return App::i()->getCurrentUser();
     }
-
 }

@@ -15,7 +15,6 @@ class MainAsset extends AssetBundle
     ];
     public $depends = [
         YiiAsset::class,
-        BootstrapAsset::class
+        BootstrapAsset::class,
     ];
-
 }

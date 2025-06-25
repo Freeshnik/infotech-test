@@ -20,10 +20,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="year-filter-block mb-4">
     <h4>Фильтр по годам</h4>
     <div class="btn-group" role="group" aria-label="Кнопки фильтра">
-        <?php foreach ($allYears as $year): ?>
+        <?php foreach ($allYears as $year) : ?>
             <?php
 
-            $buttonClass = ($year === $selectedYear)
+            $buttonClass = $year === $selectedYear
                 ? 'btn btn-primary'
                 : 'btn btn-outline-secondary';
 
@@ -37,29 +37,29 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="author-top-grid">
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'summary' => 'Топ 10 авторов за ' . $year . ' год',
-        'columns' => [
-            ['class' => SerialColumn::class],
-            [
-                'attribute' => 'fio',
-                'label' => 'ФИО',
-            ],
-            [
-                'attribute' => 'book_count',
-                'label' => 'Издано книг',
-            ],
-            [
-                'class' => ActionColumn::class,
-                'template' => '{view}',
-                'urlCreator' => static function ($action, $model) {
-                    if ($action === 'view') {
-                        return Url::to(['author/view', 'id' => $model['author_id']]);
-                    }
-                    return '';
-                }
-            ],
+    'dataProvider' => $dataProvider,
+    'summary' => 'Топ 10 авторов за ' . $year . ' год',
+    'columns' => [
+        ['class' => SerialColumn::class],
+        [
+            'attribute' => 'fio',
+            'label' => 'ФИО',
         ],
-    ]); ?>
+        [
+            'attribute' => 'book_count',
+            'label' => 'Издано книг',
+        ],
+        [
+            'class' => ActionColumn::class,
+            'template' => '{view}',
+            'urlCreator' => static function ($action, $model) {
+                if ($action === 'view') {
+                    return Url::to(['author/view', 'id' => $model['author_id']]);
+                }
+                    return '';
+            },
+        ],
+    ],
+]); ?>
 
 </div>

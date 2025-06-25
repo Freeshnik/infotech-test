@@ -4,7 +4,6 @@ namespace App;
 
 class ActiveRecord extends \yii\db\ActiveRecord
 {
-
     /**
      * @param bool $insert
      * @return bool
@@ -18,5 +17,4 @@ class ActiveRecord extends \yii\db\ActiveRecord
         }
         return parent::beforeSave($insert);
     }
-
 }

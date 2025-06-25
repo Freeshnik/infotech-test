@@ -6,7 +6,6 @@ use yii\web\HttpException;
 
 class Response
 {
-
     /**
      * @var static
      */
@@ -59,8 +58,8 @@ class Response
         }
     }
 
-    public function redirect($url, $statusCode = 302, $checkAjax = true) {
+    public function redirect($url, $statusCode = 302, $checkAjax = true)
+    {
         return \Yii::$app->response->redirect($url, $statusCode, $checkAjax);
     }
-
 }

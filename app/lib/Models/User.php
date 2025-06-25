@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Behaviors\Timestamp;
 use App\ActiveRecord;
+use App\Behaviors\Timestamp;
 use Yii;
 use yii\web\IdentityInterface;
 
 /**
- * Class User
  * @property int         $id                - ID
  * @property string      $username          - username
  * @property string      $fio               - ФИО
@@ -24,12 +23,9 @@ use yii\web\IdentityInterface;
  * @property \DateTime   $date_updated      - дата изменения
  * @property \DateTime   $date_last_visit   - дата последнего визита
  * @property int         $create_user_id
- * @package common\models
- * @package App\Models
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-
     public const TYPE_GUEST = 1;
 
     public const TYPE_USER  = 2;
@@ -45,6 +41,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Массив урлов главной страницы приложений каждого типа пользователя
+     *
      * @var array
      */
     protected $base_url
@@ -78,7 +75,7 @@ class User extends ActiveRecord implements IdentityInterface
                     'password_reset_token',
                     'email',
                 ],
-                'string'
+                'string',
             ],
             // Правила для логина
             ['username', 'string', 'min' => 4, 'max' => 255],
@@ -91,13 +88,14 @@ class User extends ActiveRecord implements IdentityInterface
                     'email',
                 ],
                 'filter',
-                'filter' => 'trim'
+                'filter' => 'trim',
             ],
         ];
     }
 
     /**
      * Поведения для дат
+     *
      * @return array
      */
     public function behaviors(): array
@@ -119,12 +117,13 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $id
      * @return void
      */
-    public static function findIdentity($id): ?ActiveRecord
+    public static function findIdentity($id): ?parent
     {
         return self::findOne($id);
     }
 
     /** Типы юзеров
+     *
      * @return string[]
      */
     public static function getTypes(): array
@@ -140,7 +139,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param null $type
      * @return User|null
      */
-    public static function findIdentityByAccessToken($token, $type = null): ?User
+    public static function findIdentityByAccessToken($token, $type = null): ?self
     {
         $token = preg_replace('/[^a-zA-Z0-9\_\-\.]+/i', '', $token);
 
@@ -154,6 +153,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Метод для
+     *
      * @return string
      */
     public function getAuthKey(): string
@@ -163,6 +163,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Валидация по кукам
+     *
      * @param string $authKey
      * @return bool
      */
@@ -199,6 +200,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Валидация пароля через заебизь
+     *
      * @param $password
      * @return bool
      */
@@ -209,6 +211,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Возвращает ссылку на главное приложение
+     *
      * @return string
      */
     public function getBaseUrl(): string
@@ -218,6 +221,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Проверяем действует ли токен сброса пароля
+     *
      * @param string $token
      * @return boolean
      */
@@ -227,7 +231,7 @@ class User extends ActiveRecord implements IdentityInterface
             return false;
         }
 
-        $timestamp = (int)substr($token, strrpos($token, '_') + 1);
+        $timestamp = (int) substr($token, strrpos($token, '_') + 1);
 
         return $timestamp + self::PASSWORD_RESET_TOKEN_TTL >= time();
     }
@@ -246,7 +250,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $token
      * @return null|self()
      */
-    public static function findByResetToken($token): ?User
+    public static function findByResetToken($token): ?self
     {
         if (!static::isPasswordResetTokenValid($token)) {
             return null;
@@ -262,7 +266,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $username
      * @return User|null
      */
-    public static function findByUsername($username): ?User
+    public static function findByUsername($username): ?self
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }

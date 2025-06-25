@@ -1,24 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: gomonov
- * Date: 13.10.16
- * Time: 0:27
- */
 
 namespace App;
 
 class TextUtils
 {
-
     /**
      * Транслитерация русских слов
+     *
      * @param string $str
      * @param bool   $to_lower
      * @return string
      */
-    public static function rus2Translate($str, $to_lower = true) {
-        $tr = array(
+    public static function rus2Translate($str, $to_lower = true)
+    {
+        $tr = [
             'А' => 'A',
             'Б' => 'B',
             'В' => 'V',
@@ -90,7 +85,7 @@ class TextUtils
             '&' => '_',
             '\'' => '',
             '—' => '_',
-        );
+        ];
         $result = preg_replace('/[^0-9\_a-z]/i', '', strtr($str, $tr));
         return $to_lower ? mb_strtolower($result, 'UTF-8') : $result;
     }

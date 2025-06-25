@@ -2,9 +2,8 @@
 
 namespace Main\Controllers;
 
-use Yii;
-use App\App;
 use App\Models\SubscribeAuthor;
+use Yii;
 use yii\db\Exception;
 use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
@@ -42,6 +41,7 @@ class SubscriptionController extends Controller
     }
 
     /** Метод подписки на автора
+     *
      * @param int $author_id
      * @return Response
      * @throws Exception

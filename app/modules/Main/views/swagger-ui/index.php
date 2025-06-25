@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Url;
 
 $this->title = 'API Documentation';

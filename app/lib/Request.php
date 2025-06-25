@@ -4,7 +4,6 @@ namespace App;
 
 class Request
 {
-
     const METHOD_GET     = 1;
     const METHOD_POST    = 2;
     const METHOD_PUT     = 3;
@@ -21,7 +20,8 @@ class Request
     /**
      * @return self
      */
-    public static function i() {
+    public static function i()
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
@@ -79,7 +79,7 @@ class Request
         if (!is_numeric($value)) {
             return $default_value;
         }
-        $value_int = (int)$this->getParam($key, $source);
+        $value_int = (int) $this->getParam($key, $source);
 
         if (is_numeric($max_value) && $value_int > $max_value) {
             return $max_value;
@@ -125,7 +125,7 @@ class Request
             return $default_value;
         }
         $value_float = $this->getParam($key, $source);
-        $value_float = (float)str_replace(',', '.', $value_float);
+        $value_float = (float) str_replace(',', '.', $value_float);
         if (is_numeric($max_value) && $value_float > $max_value) {
             return $max_value;
         }
@@ -242,7 +242,7 @@ class Request
         $items = [];
         foreach ($value as $k => $val) {
             if (is_numeric($val)) {
-                $val_int = (int)$val;
+                $val_int = (int) $val;
                 $items[$k] = $val_int;
             }
         }
@@ -287,9 +287,7 @@ class Request
             return $date;
         } elseif (is_string($value)) {
             try {
-                $date = new \DateTime($value);
-
-                return $date;
+                return new \DateTime($value);
             } catch (\Exception $e) {
                 return $default_value;
             }
@@ -420,12 +418,13 @@ class Request
      * @param int $int_ip
      * @return string
      */
-    public function intToIp($int_ip) {
+    public function intToIp($int_ip)
+    {
         if (!is_numeric($int_ip)) {
             return '0.0.0.0';
         }
-        $value = (float)$int_ip;
-        if (is_string($int_ip) && $int_ip !== (string)$value) {
+        $value = (float) $int_ip;
+        if (is_string($int_ip) && $int_ip !== (string) $value) {
             return '0.0.0.0';
         }
         return long2ip($int_ip);
@@ -438,6 +437,4 @@ class Request
     {
         return \Yii::$app->request->getCsrfToken();
     }
-
-
 }

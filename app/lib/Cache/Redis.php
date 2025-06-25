@@ -79,7 +79,6 @@ class Redis extends Cache
      * from specific cache storage.
      *
      * @param string $key a unique key identifying the cached value
-     *
      * @return mixed|false the value stored in cache, false if the value is not in the cache or expired. Most often
      * value is a string. If you have disabled [[serializer]], it could be something else.
      */
@@ -90,7 +89,6 @@ class Redis extends Cache
 
     /**
      * @param array $keys
-     *
      * @return array
      */
     protected function getValues($keys)
@@ -108,7 +106,6 @@ class Redis extends Cache
      * @param mixed  $value    the value to be cached. Most often it's a string. If you have disabled [[serializer]],
      *                         it could be something else.
      * @param int    $duration the number of seconds in which the cached value will expire. 0 means never expire.
-     *
      * @return bool true if the value is successfully stored into cache, false otherwise
      */
     protected function setValue($key, $value, $duration)
@@ -123,7 +120,6 @@ class Redis extends Cache
     /**
      * @param array $data
      * @param int   $duration
-     *
      * @return array
      */
     protected function setValues($data, $duration)
@@ -150,7 +146,6 @@ class Redis extends Cache
      * @param mixed  $value    the value to be cached. Most often it's a string. If you have disabled [[serializer]],
      *                         it could be something else.
      * @param int    $duration the number of seconds in which the cached value will expire. 0 means never expire.
-     *
      * @return bool true if the value is successfully stored into cache, false otherwise
      */
     protected function addValue($key, $value, $duration)
@@ -170,7 +165,6 @@ class Redis extends Cache
      * This method should be implemented by child classes to delete the data from actual cache storage.
      *
      * @param string $key the key of the value to be deleted
-     *
      * @return bool if no error happens during deletion
      */
     protected function deleteValue($key)
@@ -181,6 +175,7 @@ class Redis extends Cache
     /**
      * Deletes all values from cache.
      * Child classes may implement this method to realize the flush operation.
+     *
      * @return bool whether the flush operation was successful.
      */
     protected function flushValues()

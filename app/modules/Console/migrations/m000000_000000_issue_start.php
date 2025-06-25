@@ -1,9 +1,9 @@
 <?php
 
-use yii\db\Migration;
-use yii\base\InvalidConfigException;
-use yii\rbac\DbManager;
 use App\Models\User;
+use yii\base\InvalidConfigException;
+use yii\db\Migration;
+use yii\rbac\DbManager;
 
 class m000000_000000_issue_start extends Migration
 {

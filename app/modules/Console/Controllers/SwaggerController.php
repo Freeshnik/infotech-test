@@ -2,7 +2,6 @@
 
 namespace Console\Controllers;
 
-
 use OpenApi\Generator;
 use Yii;
 use yii\console\Controller;
@@ -41,7 +40,7 @@ class SwaggerController extends Controller
         // Обязательно добавьте все места, где у вас есть контроллеры, модели (DTO) и т.д.
         $scanPaths = [
             Yii::getAlias('@App/Controller'), // Ваш базовый ApiController
-            Yii::getAlias('@Api/Controllers') // Контроллеры вашего API-модуля
+            Yii::getAlias('@Api/Controllers'), // Контроллеры вашего API-модуля
         ];
 
         // Создаем директорию, если она не существует

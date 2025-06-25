@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Assets;
 
 use App\App;
 use App\Assets\Packages\AwesomeAsset;
 use App\Assets\Packages\BootstrapDatepickerAssets;
 use App\Assets\Packages\ChosenAsset;
-use App\Assets\Packages\InputMaskAsset;
 use yii\bootstrap\BootstrapAsset;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\AssetBundle;
@@ -17,11 +17,10 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/admin.css',
-        'css/skins/skin-purple.min.css'
+        'css/skins/skin-purple.min.css',
     ];
     public $js = [
         'js/app.min.js',
-
     ];
 
     public $depends = [
@@ -38,5 +37,4 @@ class AdminAsset extends AssetBundle
         parent::__construct();
         $this->css[] = 'css/skins/skin-' . App::i()->getCurrentModule()->params['layout_color'] . '.min.css';
     }
-
 }

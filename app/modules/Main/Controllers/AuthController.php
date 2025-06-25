@@ -2,10 +2,10 @@
 
 namespace Main\Controllers;
 
-use Yii;
-use yii\web\Controller;
 use App\Forms\User\LoginForm;
 use App\Forms\User\SignUpForm;
+use Yii;
+use yii\web\Controller;
 
 /**
  *

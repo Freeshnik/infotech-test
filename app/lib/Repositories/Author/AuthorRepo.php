@@ -6,13 +6,13 @@ use App\Models\Author;
 use App\Models\Book;
 use App\Repositories\Repository;
 
-
 class AuthorRepo extends Repository
 {
     /** @var int */
     private const TOP_COUNT = 10;
 
     /** Возвращает топ-10 авторов, выпустивших наибольшее количество книг в указанном году
+     *
      * @param int $year
      * @return array
      */
@@ -35,6 +35,7 @@ class AuthorRepo extends Repository
     }
 
     /** Возвращает все годы, в которых были изданы книги
+     *
      * @return array
      */
     public function getAllYears(): array

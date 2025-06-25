@@ -4,7 +4,6 @@
 /** @var ActiveForm $form */
 /** @var SignupForm $model */
 
-use App\Forms\User\SignUpForm;
 use App\Models\User;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;

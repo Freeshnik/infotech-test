@@ -2,17 +2,17 @@
 
 namespace App;
 
-class Model extends \yii\base\Model {
-
+class Model extends \yii\base\Model
+{
     public $isNewRecord = true;
 
     /** @var  ActiveRecord */
     protected $_entity = false;
 
     /**
-     * @param ActiveRecord $activeRecord
+     * @param null|ActiveRecord $activeRecord
      */
-    public function __construct(ActiveRecord $activeRecord = null)
+    public function __construct(?ActiveRecord $activeRecord = null)
     {
         if ($activeRecord) {
             $this->_entity = $activeRecord;
@@ -20,5 +20,4 @@ class Model extends \yii\base\Model {
         }
         parent::__construct();
     }
-
 }

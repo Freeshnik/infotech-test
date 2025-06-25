@@ -19,5 +19,4 @@ class ChosenAsset extends AssetBundle
     ];
 
     public $depends = [JqueryAsset::class];
-
 }

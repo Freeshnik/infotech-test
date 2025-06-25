@@ -2,11 +2,11 @@
 
 namespace App\Helpers;
 
-
 class Url extends \yii\helpers\Url
 {
     /**
      * Валиден ли урл
+     *
      * @param $url
      * @return bool
      */
@@ -17,6 +17,7 @@ class Url extends \yii\helpers\Url
 
     /**
      * Подготовить URL, если у него нету схемы
+     *
      * @param $url
      * @return string
      */
@@ -31,7 +32,7 @@ class Url extends \yii\helpers\Url
 
     /**
      * @param $url
-     * @return array|string|null
+     * @return array|string
      */
     public static function getHost($url): array|string|null
     {
