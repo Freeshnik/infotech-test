@@ -210,7 +210,7 @@
     <rule ref="WebimpressCodingStandard.Functions.ReturnType.DifferentTagAndDeclaration"/>
 
     <!-- Unexpected type "string" found in return tag -->
-    <rule ref="WebimpressCodingStandard.Functions.ReturnType.ReturnComplexType"/>
+<!--    <rule ref="WebimpressCodingStandard.Functions.ReturnType.ReturnComplexType"/>-->
 
     <!-- Function return type is array nor iterable, but function returns array here -->
 

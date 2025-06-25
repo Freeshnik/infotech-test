@@ -14,7 +14,7 @@ class BookUpdate extends WebAction
     /**
      * Displays a single Book model.
      *
-     * @param string|int|null $id ID
+     * @param string|int $id ID
      * @return Response|string
      * @throws Exception
      * @throws NotFoundHttpException
