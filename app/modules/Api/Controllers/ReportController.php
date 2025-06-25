@@ -13,10 +13,20 @@ use Yii;
     title: "Report Item",
     description: "Данные по автору в годовом отчете",
     properties: [
-        new OA\Property(property: "book_count", description: "Количество книг автора за год", type: "integer", example: 10),
+        new OA\Property(
+            property: "book_count",
+            description: "Количество книг автора за год",
+            type: "integer",
+            example: 10
+        ),
         new OA\Property(property: "year", description: "Год", type: "integer", example: 2010),
         new OA\Property(property: "author_id", description: "ID автора", type: "integer", example: 5),
-        new OA\Property(property: "fio", description: "ФИО автора", type: "string", example: "Абрам Владимирович Казаков"),
+        new OA\Property(
+            property: "fio",
+            description: "ФИО автора",
+            type: "string",
+            example: "Абрам Владимирович Казаков"
+        ),
     ],
     type: "object"
 )]
@@ -26,7 +36,12 @@ use Yii;
     title: "Top Authors Report",
     description: "Отчет по самым публикуемым авторам за год",
     properties: [
-        new OA\Property(property: "selected_year", description: "Выбранный год для отчета", type: "integer", example: 2010),
+        new OA\Property(
+            property: "selected_year",
+            description: "Выбранный год для отчета",
+            type: "integer",
+            example: 2010
+        ),
         new OA\Property(
             property: "all_years",
             description: "Список всех доступных лет для отчета",

@@ -6,8 +6,8 @@ use yii\caching\Cache;
 
 class Redis extends Cache
 {
-    const COUNTER_BY_USERNAME_PREFIX    = 'auth_username_attempts_counter_';
-    const COUNTER_BY_FINGERPRINT_PREFIX = 'auth_fp_attempts_counter_';
+    public const COUNTER_BY_USERNAME_PREFIX    = 'auth_username_attempts_counter_';
+    public const COUNTER_BY_FINGERPRINT_PREFIX = 'auth_fp_attempts_counter_';
 
     /** @var \Redis */
     public $redis;

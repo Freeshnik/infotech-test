@@ -137,7 +137,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @param mixed $token
      * @param null $type
-     * @return User|null
+     * @return self|null
      */
     public static function findIdentityByAccessToken($token, $type = null): ?self
     {
@@ -225,7 +225,7 @@ class User extends ActiveRecord implements IdentityInterface
      * @param string $token
      * @return boolean
      */
-    public static function isPasswordResetTokenValid($token): bool
+    public static function isPasswordResetTokenValid(string $token): bool
     {
         if (empty($token)) {
             return false;
@@ -248,7 +248,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Ищем по токену сброса пароля
      *
      * @param $token
-     * @return null|self()
+     * @return User|null
      */
     public static function findByResetToken($token): ?self
     {
@@ -268,6 +268,6 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByUsername($username): ?self
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return self::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }
 }

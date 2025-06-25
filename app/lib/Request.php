@@ -4,13 +4,13 @@ namespace App;
 
 class Request
 {
-    const METHOD_GET     = 1;
-    const METHOD_POST    = 2;
-    const METHOD_PUT     = 3;
-    const METHOD_DELETE  = 4;
-    const METHOD_OPTIONS = 5;
-    const METHOD_HEAD    = 6;
-    const METHOD_PATCH   = 7;
+    public const METHOD_GET     = 1;
+    public const METHOD_POST    = 2;
+    public const METHOD_PUT     = 3;
+    public const METHOD_DELETE  = 4;
+    public const METHOD_OPTIONS = 5;
+    public const METHOD_HEAD    = 6;
+    public const METHOD_PATCH   = 7;
 
     /**
      * @var static

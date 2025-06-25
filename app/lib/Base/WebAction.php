@@ -3,9 +3,8 @@
 namespace App\Base;
 
 use App\ActiveRecord;
-use App\Models\Book;
-use Yii;
 use App\Models\User;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\web\Controller as WebController;
 use yii\web\IdentityInterface;
