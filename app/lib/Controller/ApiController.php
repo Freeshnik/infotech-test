@@ -10,8 +10,8 @@ use yii\web\Response;
 /** Родительский контроллер для API модуля */
 #[OA\Info(
     version: "1.0.0",
-    description: "API documentation for my application",
-    title: "My API"
+    description: "Документация API",
+    title: "API"
 )]
 #[OA\Server(
     url: "http://localhost/api",
