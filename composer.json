@@ -24,16 +24,16 @@
     "zircote/swagger-php": "^5.1"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest",
     "codeception/codeception": "5.*",
-    "codeception/module-yii2": "^1.1",
     "codeception/module-asserts": "^3.0 || ^1.1",
     "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
+    "codeception/module-yii2": "^1.1",
     "codeception/verify": "^3.0 || ^2.2",
-    "friendsofphp/php-cs-fixer": "^3.22",
+    "friendsofphp/php-cs-fixer": "^3.75",
     "opsway/psr12-strict-coding-standard": "^1.0",
     "phpstan/phpstan": "^1.8",
     "phpunit/phpunit": "~9.6.10.0",
+    "roave/security-advisories": "dev-latest",
     "squizlabs/php_codesniffer": "*",
     "symfony/browser-kit": "^6.0 || >=2.7 <=4.2.4",
     "webimpress/coding-standard": "^1.2",
@@ -42,8 +42,8 @@
     "yiisoft/yii2-gii": "*"
   },
   "scripts": {
-    "cs-check": "phpcs",
-    "cs-fix": "phpcbf"
+    "cs-check": "./vendor/bin/phpcs app/",
+    "cs-fix": "./vendor/bin/phpcbf app/"
   },
   "config": {
     "sort-packages": true,
