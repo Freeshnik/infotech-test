@@ -223,7 +223,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Проверяем действует ли токен сброса пароля
      *
      * @param string $token
-     * @return boolean
+     * @return bool
      */
     public static function isPasswordResetTokenValid(string $token): bool
     {
@@ -248,7 +248,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Ищем по токену сброса пароля
      *
      * @param $token
-     * @return User|null
+     * @return self|null
      */
     public static function findByResetToken($token): ?self
     {
@@ -264,7 +264,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * @param $username
-     * @return User|null
+     * @return self|null
      */
     public static function findByUsername($username): ?self
     {

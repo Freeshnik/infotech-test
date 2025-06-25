@@ -76,11 +76,12 @@ abstract class WebAction extends BaseAction
     /**
      * Finds the Book model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param int $id ID
      * @return ActiveRecord the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($className, int $id,): ActiveRecord
+    protected function findModel($className, int $id): ActiveRecord
     {
         if (($model = $className::findOne(['id' => $id])) !== null) {
             return $model;

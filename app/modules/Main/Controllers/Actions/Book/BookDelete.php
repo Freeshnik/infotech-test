@@ -11,7 +11,7 @@ use yii\web\Response;
 class BookDelete extends WebAction
 {
     /**
-     * @param string|int|null $id
+     * @param string|int $id
      * @return Response
      * @throws \Throwable
      * @throws StaleObjectException

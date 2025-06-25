@@ -32,7 +32,7 @@ class Url extends \yii\helpers\Url
 
     /**
      * @param $url
-     * @return array|string
+     * @return array|string|null
      */
     public static function getHost($url): array|string|null
     {
