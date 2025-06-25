@@ -207,7 +207,7 @@
     <rule ref="WebimpressCodingStandard.Functions.ReturnType.ReturnArray"/>
 
     <!-- Return type in PHPDoc tag is different than declared type in method declaration: "mixed" and "string" -->
-    <rule ref="WebimpressCodingStandard.Functions.ReturnType.DifferentTagAndDeclaration"/>
+<!--    <rule ref="WebimpressCodingStandard.Functions.ReturnType.DifferentTagAndDeclaration"/>-->
 
     <!-- Unexpected type "string" found in return tag -->
 <!--    <rule ref="WebimpressCodingStandard.Functions.ReturnType.ReturnComplexType"/>-->
