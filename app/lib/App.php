@@ -8,7 +8,7 @@ use yii\db\Connection;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 
-class App
+final class App
 {
     /**
      * @var App|null
@@ -16,14 +16,14 @@ class App
     protected static App|null $instance = null;
 
     /**
-     * @var []
+     * @var array
      */
     protected mixed $config;
 
     /**
-     * @return static
+     * @return App
      */
-    public static function i()
+    public static function i(): App
     {
         if (self::$instance === null) {
             self::$instance = new static();
@@ -34,7 +34,7 @@ class App
 
     /**
      * @param string $module_name
-     * @return []
+     * @return array|mixed
      */
     public function getConfig($module_name = MODULE_NAME)
     {

@@ -21,8 +21,8 @@ class NewBookSmsNotifyJob extends BaseObject implements JobInterface
     public function execute($queue): void
     {
         $user = User::findOne($this->user_id);
-        /** @var  $book Book */
-        $book = Book::find()->where(['id' => $this->book_id])->with('author')->one();
+        /** @var Book $book */
+        $book = Book::find()->where(['id' => $this->book_id])->with('authors')->one();
 
         if (!$user || !$book) {
             return;
@@ -64,7 +64,7 @@ class NewBookSmsNotifyJob extends BaseObject implements JobInterface
     public function buildQuery(Book $book, User $user): array
     {
         return [
-            'send' => 'Вышла новая книга "' . $book->title . '" от автора: ' . $book->author->fio,
+            'send' => 'Вышла новая книга "' . $book->title . '" от автора(ов): ' . implode(', ', array_column($book->authors, 'fio')),
             'to' => str_replace('+', '', $user->phone),
             'apikey' => self::API_KEY,
             'format' => 'json',

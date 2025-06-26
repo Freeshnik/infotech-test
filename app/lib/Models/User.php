@@ -115,7 +115,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * @param $id
-     * @return void
+     * @return ActiveRecord|null
      */
     public static function findIdentity($id): ?parent
     {

@@ -1,14 +1,16 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $content string */
 
+use App\Assets\MainAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\web\View;
 use yii\widgets\Breadcrumbs;
 
-\App\Assets\MainAsset::register($this);
+MainAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

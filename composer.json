@@ -31,7 +31,7 @@
     "codeception/verify": "^3.0 || ^2.2",
     "friendsofphp/php-cs-fixer": "^3.75",
     "opsway/psr12-strict-coding-standard": "^1.0",
-    "phpstan/phpstan": "^1.8",
+    "phpstan/phpstan": "^2.1",
     "phpunit/phpunit": "~9.6.10.0",
     "roave/security-advisories": "dev-latest",
     "squizlabs/php_codesniffer": "*",
@@ -43,7 +43,8 @@
   },
   "scripts": {
     "cs-check": "./vendor/bin/phpcs app/",
-    "cs-fix": "./vendor/bin/phpcbf app/"
+    "cs-fix": "./vendor/bin/phpcbf app/",
+    "phpstan-check": "./vendor/bin/phpstan analyse"
   },
   "config": {
     "sort-packages": true,

@@ -12,7 +12,7 @@ class Response
     protected static $instance;
 
     /**
-     * @return self
+     * @return self|static
      */
     public static function i()
     {
@@ -36,17 +36,24 @@ class Response
      * @param string $message
      * @throws HttpException
      */
-    public function set403($message = '')
+    public function set403($message = ''): void
     {
         throw new HttpException(403, $message);
     }
 
-    public function setJsonFormat()
+    /**
+     * @return void
+     */
+    public function setJsonFormat(): void
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
     }
 
-    public function setXmlFormat($data = null)
+    /**
+     * @param $data
+     * @return void
+     */
+    public function setXmlFormat($data = null): void
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
         if ($data) {
@@ -58,7 +65,13 @@ class Response
         }
     }
 
-    public function redirect($url, $statusCode = 302, $checkAjax = true)
+    /**
+     * @param $url
+     * @param $statusCode
+     * @param $checkAjax
+     * @return \yii\web\Response|\yii\console\Response|Response
+     */
+    public function redirect($url, $statusCode = 302, $checkAjax = true): \yii\web\Response|\yii\console\Response|Response
     {
         return \Yii::$app->response->redirect($url, $statusCode, $checkAjax);
     }

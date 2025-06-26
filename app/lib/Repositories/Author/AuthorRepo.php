@@ -8,7 +8,7 @@ use App\Repositories\Repository;
 
 class AuthorRepo extends Repository
 {
-    /** @var int */
+    /** @var int Количество авторов в топе */
     private const TOP_COUNT = 10;
 
     /** Возвращает топ-10 авторов, выпустивших наибольшее количество книг в указанном году

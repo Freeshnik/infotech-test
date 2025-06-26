@@ -7,7 +7,7 @@ class Model extends \yii\base\Model
     public $isNewRecord = true;
 
     /** @var  ActiveRecord */
-    protected $_entity = false;
+    protected $_entity;
 
     /**
      * @param null|ActiveRecord $activeRecord

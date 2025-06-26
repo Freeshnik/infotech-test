@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="author-top-grid">
     <?= GridView::widget([
     'dataProvider' => $dataProvider,
-    'summary' => 'Топ 10 авторов за ' . $year . ' год',
+    'summary' => 'Топ 10 авторов за ' . $selectedYear . ' год',
     'columns' => [
         ['class' => SerialColumn::class],
         [

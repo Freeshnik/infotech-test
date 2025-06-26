@@ -54,6 +54,7 @@ class m250612_094154_insert_authors_and_books extends Migration
                 'title' => rtrim($faker->sentence(mt_rand(2, 5)), '.'),
                 'year' => $years[array_rand($years)],
                 'description' => $faker->optional(0.8)->paragraph(3, true),
+                // @phpstan-ignore-next-line
                 'isbn' => $faker->isbn13,
                 'photo_path' => '/img/book_image.jpg',
                 'date_created' => $faker->dateTimeThisDecade->format('Y-m-d H:i:s'),

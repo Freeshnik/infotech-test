@@ -3,6 +3,7 @@
 namespace App\Behaviors\Book;
 
 use App\Jobs\Book\NewBookSmsNotifyJob;
+use App\Models\Book;
 use App\Models\SubscribeAuthor;
 use Yii;
 use yii\base\Behavior;
@@ -33,13 +34,15 @@ class NewBookNotifyBehavior extends Behavior
      */
     public function handlerInsert($event): void
     {
-        $subscribers = SubscribeAuthor::find()->select(['user_id'])->where(['author_id' => array_column($this->owner->authors, 'id')])->column();
+        /** @var Book $owned */
+        $owned = $this->owner;
+        $subscribers = SubscribeAuthor::find()->select(['user_id'])->where(['author_id' => array_column($owned->authors, 'id')])->column();
         if (empty($subscribers)) {
             return;
         }
 
         foreach ($subscribers as $userId) {
-            $this->createNewJob($userId, $this->owner->id);
+            $this->createNewJob($userId, $owned->id);
         }
     }
 

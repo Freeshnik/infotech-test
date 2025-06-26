@@ -8,7 +8,7 @@ class m250612_081503_author extends Migration
 
     public function safeUp(): void
     {
-        $this->createTable('author', [
+        $this->createTable($this->table, [
             'id' => $this->primaryKey(),
             'fio' => $this->string()->notNull(),
             'description' => $this->text()->null(),
@@ -19,6 +19,6 @@ class m250612_081503_author extends Migration
 
     public function safeDown(): void
     {
-        $this->dropTable('author');
+        $this->dropTable($this->table);
     }
 }

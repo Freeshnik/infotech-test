@@ -18,7 +18,7 @@ class Request
     protected static $instance;
 
     /**
-     * @return self
+     * @return self|static
      */
     public static function i()
     {
@@ -373,17 +373,16 @@ class Request
 
     /**
      * @return bool|mixed
-     * @throws \Exception
      */
-    public function isPost()
+    public function isPost(): mixed
     {
         return \Yii::$app->request->isPost;
     }
 
     /**
-     * @return bool
+     * @return bool|mixed
      */
-    public function isAjax()
+    public function isAjax(): mixed
     {
         return \Yii::$app->request->isAjax;
     }

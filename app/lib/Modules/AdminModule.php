@@ -97,17 +97,17 @@ class AdminModule extends Module
                             [
                                 'label' => 'По паблишерам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/publishers', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
+                                'url'   => ['/admin/reports/publishers'],
                             ],
                             [
                                 'label' => 'По дням',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/date', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
+                                'url'   => ['/admin/reports/date'],
                             ],
                             [
                                 'label' => 'По платформам',
                                 'icon'  => 'fa fa-caret-right',
-                                'url'   => ['/admin/reports/platform', Param::STAT_SOURCE => Param::SOURCE_PIXEL],
+                                'url'   => ['/admin/reports/platform'],
                             ],
                         ],
                     ],

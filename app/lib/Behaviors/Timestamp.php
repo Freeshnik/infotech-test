@@ -21,7 +21,7 @@ class Timestamp extends TimestampBehavior
     public $updatedAtAttribute = 'date_updated';
 
     /**
-     * @var
+     * @var mixed
      */
     public $value;
 

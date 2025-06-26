@@ -8,13 +8,10 @@ use yii\base\InvalidConfigException;
 use yii\web\Controller;
 
 /**
- * Class ReportController - выводит топ TOP_COUNT авторов, выпустивших наибольшее количество книг в указанном году
+ * Class ReportController - выводит топ AuthorRepo::TOP_COUNT авторов, выпустивших наибольшее количество книг в указанном году
  */
 class ReportController extends Controller
 {
-    /** @var int Количество авторов в топе */
-    private const TOP_COUNT = 10;
-
     /**
      * @throws InvalidConfigException
      */
